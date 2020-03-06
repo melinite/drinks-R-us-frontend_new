@@ -29,7 +29,7 @@ class Login extends Component {
     this.Auth.login(user)
       .then(res => {
         window.alert('Logged In Successfully!');
-        this.props.history.replace('/Users');
+        this.props.history.replace('/Profile');
       })
       .catch(err => {
         alert(err);
@@ -40,7 +40,7 @@ class Login extends Component {
   componentWillMount() {
     if (this.Auth.loggedIn()) {
       window.alert('You are already logged in!');
-      this.props.history.replace('/Users');
+      this.props.history.replace('/Profile');
     };
   }
 
