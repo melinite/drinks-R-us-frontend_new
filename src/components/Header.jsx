@@ -8,7 +8,6 @@ import Profile from '../pages/Profile';
 import Register from '../pages/Register';
 import Admin from '../pages/Admin';
 import Wine from '../pages/Wine';
-import Users from '../pages/Users';
 import { NavLink, Switch, Route } from 'react-router-dom';
 import AuthService from './AuthService';
 import { withRouter } from "react-router";
@@ -17,7 +16,7 @@ class Header extends Component {
     constructor() {
         super();
         this.Auth = new AuthService();
-        this.logout = this.logout.bind(this)
+        this.logout = this.logout.bind(this);
     }
     logout() {
         this.Auth.logout();
@@ -63,9 +62,6 @@ class Header extends Component {
                                 <NavLink to="/Admin" className="nav-link"> Admin </NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to="/Users" className="nav-link"> Users </NavLink>
-                            </li>
-                            <li className="nav-item">
                                 <a className="nav-link" onClick={this.logout}> Logout </a>
                             </li>
                         </ul>
@@ -81,7 +77,6 @@ class Header extends Component {
                     <Route path="/Admin" component={Admin} />
                     <Route path="/Register" component={Register} />
                     <Route path="/Wine" component={Wine} />
-                    <Route path="/Users" component={Users} />
                 </Switch>
             </div>
         );
