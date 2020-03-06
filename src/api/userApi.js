@@ -1,3 +1,6 @@
+import AuthService from '../components/AuthService';
+const Auth = new AuthService();
+
 export async function registerUser(user) {
   const response = await fetch('http://localhost:3001/api/users/register', {
     method: 'POST',
@@ -23,9 +26,16 @@ export async function loginUser(user) {
   return await response.json();
 }
 
+// fetch user profile using protected fetch from auth service
 export async function getProfileData() {
-  const response = await fetch('http://localhost:3001/api/users/register', {
-    method: 'POST'
-  });
-  return await response.json();
+  const userProfile = Auth.getProfile();
+  if (userProfile) {
+    const userId = userProfile.id;
+    const response = await Auth.fetch(`${Auth.domain}/users/${userId}`, {
+      method: 'GET'
+    });
+    return await response;
+  } else {
+    return Promise.resolve();
+  }
 }
