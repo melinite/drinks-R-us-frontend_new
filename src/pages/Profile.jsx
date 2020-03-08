@@ -18,6 +18,8 @@ class Profile extends Component {
     }
 
     componentDidMount() {
+        const Auth = new AuthService();
+        console.log(Auth.isAdmin());
         getProfileData()
             .then(profileData => {
                 this.setState({

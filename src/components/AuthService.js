@@ -62,6 +62,16 @@ export default class AuthService {
         return decode(this.getToken());
     }
 
+    isAdmin() {
+        const tokenDecoded = this.getProfile();
+        console.log(tokenDecoded);
+        if (tokenDecoded && tokenDecoded.isAdmin) {
+           return true;
+        } else {
+            return false;
+        }
+    }
+
 
     fetch(url, options) {
         // performs api calls sending the required authentication headers
